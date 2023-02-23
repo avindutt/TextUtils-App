@@ -7,16 +7,17 @@ function TextForm (props) {
         event.preventDefault()
         var newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to uppercase!", "success");
     }
 
     const handleOnChange = (event) => {
         setText(event.target.value);
     }
 
-    const [text, setText] = useState("Enter text here");
+    const [text, setText] = useState("Enter text here...");
     return (
     <>
-    <div className='container mb-3'>
+    <div className='container mb-3' style={{color: props.mode==='dark'?'white':'black'}}>
         <h1 className='my-3'>{props.heading}</h1>
         <form>
         <div className="form-group">
@@ -26,7 +27,7 @@ function TextForm (props) {
         </form>
     </div>
 
-    <div className='container my-3'>
+    <div className='container my-3' style={{color: props.mode === 'dark'?'white':'black'}}>
        <h3> Your text Summary </h3> 
         <p>{text.length} characters and {text.split(" ").length} words.</p>
         <p>{0.008 * text.length} Minutes read</p>

@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Navbar(props){
+
     return(
         <>
             <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
@@ -33,9 +34,9 @@ function Navbar(props){
             </li>
         </ul>
 
-        <div class="custom-control custom-switch">
-                <input type="checkbox" class="custom-control-input" id="customSwitch1"/>
-                <label class="custom-control-label text-light mx-3" for="customSwitch1">Enable Dark Mode</label>
+        <div className={`custom-control custom-switch mx-3 text-${props.mode === 'light' ? 'dark' : 'light'}`}>
+                <input onClick={props.toggleMode} type="checkbox" className="custom-control-input" id="customSwitch1"/>
+                <label className="custom-control-label mx-3" htmlFor="customSwitch1">{props.modeName}</label>
         </div>
 
         <form className="form-inline my-2 my-lg-0">
